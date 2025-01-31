@@ -1,0 +1,25 @@
+<div>
+    <div class="center-flex">
+      <div style="width: 10px;">{{ boxIndex + 1 }}</div>
+      <div class="top-box"></div>
+    </div>
+    <div class="box" 
+      [class.different-background]="boxIndex === 8 || boxIndex === 9"
+      [class.empty-box]="!options()[boxIndex]"
+      [class.selected-box]="boxIndexSignal() === boxIndex"
+      (click)="selectBox()">
+      @if(options()[boxIndex]) {
+      <div>
+        <img [src]="options()[boxIndex]?.imageUrl" class="box-image" />
+      </div>
+      } @else {
+      <span>Select Element</span>
+      }
+    </div>
+    <div class="center-flex" style="position: relative;">
+      <div class="bottom-box"></div>
+      <div style="position: absolute;">
+        {{ options()[boxIndex]?.value || '' }}
+      </div>
+    </div>
+  </div>
